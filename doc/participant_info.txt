@@ -1,0 +1,6 @@
+P001: Fs =
+P002: Fs =
+P003: Fs = 
+P004: Fs = Fulya, makeup. We will only use for reaction times
+P005: Fs = Dilara, contact lenses. Calibration issue
+
