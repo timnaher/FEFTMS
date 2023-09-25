@@ -15,16 +15,17 @@ import math
 from skimage.measure import label
 import re
 
-#%%
+
 datapath = '/mnt/cs/projects/HEFEFTMS/data'
 Pdirs    = glob.glob(os.path.join(datapath, "P[0-9][0-9][0-9]"))
 Pfiles   = [file for Pdir in Pdirs for file in glob.glob(os.path.join(Pdir, "*.hdf5"))]
-pid      = [int(path.split('/')[-1].split('.')[0][1:]) for path in Pfiles]
+pids     = [int(path.split('/')[-1].split('.')[0][1:]) for path in Pfiles]
 
 
 #%%
 
-for path,pid in zip(Pfiles,pid): 
+for path,pid in zip(Pfiles,pids): 
+    print(pid)
     df,eventNames,eventTimes             =  create_df(path)
     df                                   =  zero_phase_lowpass_filter_df(df,cutoff_freq=100,sample_rate=1000,order=2)
     df                                   =  remove_blinks(df,w1=20,w2=20)
@@ -47,7 +48,7 @@ for path,pid in zip(Pfiles,pid):
 #%% TEMPORARY DIAGNOSTICS
 
 # plot example scanpath
-iTrial = 3
+iTrial = 2
 fig, ax = plt.subplots(figsize=(50,30))
 ax.plot(df.iloc[iTrial].x[df.iloc[iTrial].ImageOnset:],df.iloc[iTrial].y[df.iloc[iTrial].ImageOnset:],color='r',linewidth=2,alpha=0.5)
 ax.imshow(df.iloc[iTrial].image_matrix,cmap='gray')
