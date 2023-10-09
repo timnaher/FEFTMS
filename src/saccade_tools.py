@@ -15,7 +15,7 @@ from skimage.measure import label
 
 
 def detect_saccades(row):
-    weights_name = '/cs/projects/HEFEFTMS/preprocessing/saccade_detection/training/weights'
+    weights_name = '/cs/projects/HEFEFTMS/FEFTMS/preprocessing/saccade_detection/training/weights'
     model = uneye.DNN(max_iter=500, sampfreq=1000,
                 lr=0.001, weights_name=weights_name,
                 min_sacc_dist=50,min_sacc_dur=6,augmentation=True)
